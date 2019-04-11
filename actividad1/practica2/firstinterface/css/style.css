@@ -1,0 +1,124 @@
+/* inicio y formato */
+*, html, body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+h3{
+  font-size: 1.5rem;
+}
+a {
+  text-decoration: none;
+  color: green;
+}
+
+a:hover {
+  color: brown
+}
+/* contenedor */
+.container {
+  display: flex;
+  /* margin: 5px; */
+  padding: 0;
+  margin: 0 auto;
+  height: 47vh;
+}
+/* estilo del header */
+.header {
+  /* border: 1px solid black; */
+  background-image: url(../img/design1_image1.jpg);
+  background-size: 100% 100%;
+  height: 15em;
+  ;
+}
+
+.header h1 {
+  display: inline;
+  color: rgba(218, 39, 39, 0.808);
+  background-color: rgba(0, 0, 0, 0.322);
+  border-radius: 5px 5px;
+  position: relative;
+  top: 1em;
+  left: 1em;
+  -webkit-box-shadow: 0px 10px 73px 24px rgba(149, 179, 84, 1);
+  -moz-box-shadow: 0px 10px 73px 24px rgba(149, 179, 84, 1);
+  box-shadow: 0px 10px 73px 24px rgba(149, 179, 84, 1);
+}
+
+.header h2 {
+  background-color: black;
+  color: azure;
+  position: relative;
+  top: 1.5em;
+  text-align: center;
+}
+/* estilos al logo del header */
+.logo {
+  display: block;
+  width: 10%;
+  position: relative;
+  top:8em;
+  left: 80%;
+  z-index: 9999;
+}
+/* estilos al cuerpo */
+.aside {
+  display: inline-block;
+  /* border: 1px solid black; */
+  width: 20%;
+  padding: 5em;
+}
+/* estilos al nav*/
+.nav {
+  align-content: center;
+}
+
+.nav li {
+  display: inline-block;
+  padding-bottom: 2em;
+}
+
+
+.section {
+  /* border: 1px solid black; */
+  width: 60%;
+  padding-left: .5em;
+}
+
+.section img {
+  max-width: 50%;
+  max-height: 95%;
+  border-radius: 5px 5px;
+  -webkit-box-shadow: 0px 32px 47px 5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 32px 47px 5px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 32px 47px 5px rgba(0, 0, 0, 0.75);
+  height: 60vh;
+  margin-left: 50px;
+}
+
+.margin {
+  margin-top: 3.5em;
+}
+
+
+.text{
+  margin:5px 0; 
+  padding-left:2rem;  
+}
+.article{
+  margin-top:10px; 
+}
+.justify
+{
+  text-align: justify;
+}

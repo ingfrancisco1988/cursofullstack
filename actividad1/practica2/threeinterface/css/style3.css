@@ -1,0 +1,160 @@
+*, html, body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+/* estilos generales */
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+h4, p {
+    padding: 0.25rem;
+    font-size: 1rem;
+}
+
+img {
+    max-width: 80%;
+    max-height: 50%;
+}
+
+a {
+    text-decoration: none;
+    color: rgba(28, 211, 28, 0.876);
+    -webkit-transition: width 2s;
+    transition: width 2s;
+}
+/* estilos de contenedor */
+.container {
+    margin: auto;
+}
+
+.container h1 {
+    vertical-align: 3rem;
+    margin-bottom: 100px;
+}
+/* estilos de header */
+.header {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header h1 {
+    display: inline-block;
+    margin: 20PX;
+}
+
+header ul {
+    text-align: left;
+    margin-left: 8.9rem;
+}
+
+.header ul>li {
+    margin-top: 15px;
+    display: inline-block;
+    margin: 2px;
+    padding: 2px;
+    transition: transform 1s;
+}
+
+.header li:hover {
+    transform: scale(1, 2);
+}
+
+.header a:hover {
+    width: 300px;
+    color: brown;
+}
+
+.logo {
+    max-width: 10%;
+}
+/* estilos del section */
+.section>.container {
+    border: 1px solid plum;
+    border-radius: 5px 5px;
+    display: flex;
+    width: 75%;
+}
+
+.section h2 {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.section>.container>img {
+    border-radius: 5px 5px;
+    -webkit-box-shadow: 0px 32px 47px 5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 32px 47px 5px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 32px 47px 5px rgba(0, 0, 0, 0.75);
+    height: 60vh;
+}
+
+.container>.text {
+    margin: 4px;
+    width: 80%;
+    padding-left: 50px;
+    padding-top: 15px;
+}
+
+.article {
+    margin-bottom: 1rem;
+    margin: auto;
+}
+
+.espace {
+    margin-bottom: 1rem;
+}
+
+.justify {
+    text-align: justify;
+}
+
+.center {
+    text-align: center;
+}
+
+.valing {
+    margin-top: 20%;
+    margin-right: 50px;
+}
+.reglas{
+    width: 80%;
+    margin: 0 auto; 
+    text-align: justify;   
+}
+.reglas>ul,.reglas>ol
+{
+    margin-left: 50px;
+    margin-bottom: 1rem;
+}
+
+.level2
+{     
+    margin-bottom: 1rem;
+    margin-left: 40px;
+}
+.level3
+{
+    margin-left: 40px
+}
+
+.cuadro
+{
+    list-style-type: square;
+}
+.circulo
+{
+    list-style-type: circle;   
+}
