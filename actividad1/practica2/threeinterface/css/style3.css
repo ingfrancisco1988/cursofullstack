@@ -124,6 +124,9 @@ header ul {
 .center {
     text-align: center;
 }
+.negrita{
+    font-size: 1.2rem;
+}
 
 .valing {
     margin-top: 20%;
@@ -158,3 +161,25 @@ header ul {
 {
     list-style-type: circle;   
 }
+.tablas{
+    width: 90%;
+    border: 1px solid black;
+    background-color:greenyellow; 
+    margin: 0 auto;
+
+}
+.tablas th{
+    border: 1px solid black;
+    width: 20%;
+}
+.container50{
+width: 75%;
+margin: 0 auto;
+padding-left:10%; 
+}
+.container50 th{
+    width: 50%;
+    font-size: 1.4rem;
+    align-content: center;
+}
+
