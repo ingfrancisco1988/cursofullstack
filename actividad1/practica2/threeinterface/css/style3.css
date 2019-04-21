@@ -157,6 +157,11 @@ header ul {
 {
     list-style-type: square;
 }
+.middle
+{
+    margin-left: 50%;
+    margin-right: 50%;
+}
 .circulo
 {
     list-style-type: circle;   
@@ -172,14 +177,81 @@ header ul {
     border: 1px solid black;
     width: 20%;
 }
+
+
+iframe{
+     
+    border-radius:5px;
+    margin-bottom:1rem;  
+    width: 300px;
+    height: 300px;
+    
+
+}
 .container50{
 width: 75%;
 margin: 0 auto;
 padding-left:10%; 
+
 }
-.container50 th{
+/* .container50>th{
     width: 50%;
     font-size: 1.4rem;
     align-content: center;
+    border: 1px solid black
+} */
+
+  .table
+{
+    padding-left: 0;
+    margin: 0 auto;
+    width: 50%;
+    
+}
+/* .container50>tr,.container50>tr>td{
+    width: 50%;
+    font-size: 1.4rem;
+    align-content: center;
+    border: 1px solid black
+}*/
+.container50 iframe{
+    width: 75%;
+    margin-left:12.5%;
+    margin-right:12.5%;
+     
+    
+} 
+form{
+    width: 80%;
+    margin: 0px auto;
 }
 
+input[type=text],input[type=email],input[type=date],select{
+    border: none;
+    border-bottom:1px solid greenyellow;
+    width: 100%; 
+}
+
+.first
+{
+     /* border: 1px solid red; */
+    width:100%;
+}
+.first>input[type=text],input[type=date]
+{
+     margin-top:1rem; 
+    padding: 2px;
+    width:35%;
+}
+.second
+{
+    width:100%;
+    padding: 2px;
+    margin-top: .25rem;
+     
+}
+.second>input[type=text]
+{
+     margin-top:.5rem;
+     margin-left: 2rem;
+}
