@@ -107,7 +107,7 @@ for (let a = 0; a < arregloPar.length; a++) {
 asignarTexto.innerHTML +=  "</p>";
 //--------------------------------------------------------------------------------------------------
 //no sigo mandano a visualizar la informacion en el html
-//Exercise 7:
+//Exercise 8:
 console.log("Funcion con array");
 
 arreglo =[10,15,7,8,10,74] //array de ejemplificacion
@@ -130,7 +130,7 @@ function nMenorArreglo(valor)
   console.log("el menor del array es: "+aux)
 }
 //--------------------------------------------------------------------------------------------------
-//Exercise 8:
+//Exercise 9:
 console.log("-------------------")
 nMayorArreglo(arreglo)
 function nMayorArreglo(valor)
@@ -146,7 +146,7 @@ function nMayorArreglo(valor)
   console.log("el mayor del array es: "+aux)
 }
 //--------------------------------------------------------------------------------------------------
-//Exercise 9:
+//Exercise 10:
 console.log("-------------------");
 var array = [3, 6, 67, 6, 23, 11, 100];
 var index = 3;
@@ -169,7 +169,7 @@ function valorIndice(arreglo, indice) {
   }
 }
 //--------------------------------------------------------------------------------------------------
-//Exercise 10:
+//Exercise 11:
 console.log("-------------------")
 var array1 = [3,6,67,6,23,11,100,8,93,0,17,24,7,1,33,45,28,33,23,12,99,100];
 numerosRepeditos(array1)
@@ -200,7 +200,7 @@ function numerosRepeditos(arreglo1) {
   }
 }
 //--------------------------------------------------------------------------------------------------
-//Exercise 11:
+//Exercise 12:
 console.log("-------------------")
 myColor = ["Red", "Green", "White", "Black"];
 
@@ -215,6 +215,92 @@ function unionColores(arreglo2)
   }
   console.log(union)
 }
+//--------------------------------------------------------------------------------------------------
+//Exercise 13:
+console.log("-------------------")
+var arregloNumeros = "32443"
+var newArray =[]
+volteaNumeros(arregloNumeros)
+
+function volteaNumeros(aVuelta)
+{
+
+  let i =0,j=0;
+  var cadena =""
+  for(i=aVuelta.length-1;i>=0;i--)
+  {
+    newArray[j]=aVuelta[i]
+    j++
+  }
+  for(let i=0;i<newArray.length;i++)
+  {
+    cadena += newArray[i]
+  }
+  console.log(cadena)
+}
+//--------------------------------------------------------------------------------------------------
+//Exercise 14:
+console.log("-------------------")
+var cadena = "webmaster"
+var array =[]
+var orden = " "
+ordenAflabetico(cadena)
+function ordenAflabetico(valor)
+{
+  let i=0
+  for(i=0;i<valor.length;i++)
+  {
+    if(isNaN(valor[i]))
+    {
+      array[i] = valor[i];
+    }
+    else{
+      break
+    }    
+  }
+  array.sort()
+  for(i=0;i<array.length;i++)
+  {
+    orden += array[i]
+  }
+  console.log(orden)
+}
+//--------------------------------------------------------------------------------------------------
+//Exercise 15:
+console.log("-------------------")
+var cadena = "prince of persia"
+var res
+letraMayuscula(cadena)
+
+function letraMayuscula(valor)
+{
+  //agregando una expresion regular que me lea tildes y carateres raros
+  res =  valor.replace(/(^|[^A-Za-zÁÉÍÓÚÜÑáéíóúüñ])([a-záéíóúüñ])/g,c=>c.toUpperCase())
+  console.log(res)
+}
+//--------------------------------------------------------------------------------------------------
+//Exercise 16:
+console.log("-------------------")
+var cadena = "Web Development Tutorial"
+
+palabraLarga(cadena)
+var arreglo = []
 
 
+function palabraLarga (valor)
+{
+  var array = valor.split(" ");
+  var guardado =""
+  for(i=0;i<array.length-1;i++)
+  {
+    if(array[i].length>array[i+1].length)
+    {
+      aux=array[i]
+      array[i]=array[i+1]
+      array[i+1]=aux
+      guardado =aux;
+    }    
+  }
+  console.log("La parlabra mas grande es: " + guardado)
+}
 
