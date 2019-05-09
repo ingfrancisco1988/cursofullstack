@@ -1,0 +1,22 @@
+*,body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+@font-face{
+   
+    font-family: "Titulo";
+    src: url("../font/titulo/Titulo.ttf");
+}
+h1{
+  font-family: "Titulo";
+  text-align: center;
+}
+.espace{
+  margin-left:.5rem; 
+}
+.cambioColor:hover{
+  color: black !important;
+  background-color: brown !important;
+}
