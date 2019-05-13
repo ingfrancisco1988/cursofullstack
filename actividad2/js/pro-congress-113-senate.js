@@ -20722,7 +20722,7 @@ var pro = document.getElementById("senate-data")
 var tbody= document.createElement("tbody")
 // pro.appendChild(tbody)
 
- var tabla="<thead><tr><th>Full Name</th><th>Party</th><th>State</th><th>Senority</th><th>Percentage of votes</th></tr></thead>"
+ var tabla="<thead class='thead-dark'><tr><th>Full Name</th><th>Party</th><th>State</th><th>Senority</th><th>Percentage of votes</th></tr></thead>"
 
 
 
@@ -20738,11 +20738,11 @@ var tbody= document.createElement("tbody")
      //console.log(array[i].last_name+array[i].first_name+array[i].middle_name)
      if(array[i].last_name!=null && array[i].first_name!=null && array[i].middle_name!=null)
      {
-      tabla+="<td>"+array[i].last_name+" "+array[i].first_name+" "+array[i].middle_name+"</td>"
+      tabla+="<td><a href='"+array[i].url+"'>"+array[i].last_name+" "+array[i].first_name+" "+array[i].middle_name+"</a></td>"
      }
     else if(array[i].middle_name==null)
      {
-       tabla+="<td>"+array[i].last_name+" "+array[i].first_name+" "+"..."+"</td>"
+       tabla+="<td><a href='"+array[i].url+"'>"+array[i].last_name+" "+array[i].first_name+" "+"..."+"</a></td>"
      }
      tabla+="<td>"+" "+array[i].party+" "+"</td>"
     tabla+="<td>"+" "+array[i].state+" "+"</td>"
