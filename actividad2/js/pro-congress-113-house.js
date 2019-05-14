@@ -4844,3 +4844,43 @@ var data = {
       }
    ]
 }
+
+var str = JSON.stringify(data, null, 2);
+var valor = JSON.parse(str)
+var pro = document.getElementById("senate-data")
+
+var tbody= document.createElement("tbody")
+// pro.appendChild(tbody)
+
+ var tabla="<thead class='thead-dark'><tr><th>Full Name</th><th>Party</th><th>State</th><th>Senority</th><th>Percentage of votes</th></tr></thead>"
+
+
+
+ var arreglo = valor.results[0].members
+ agregarVotantes(arreglo)
+ function agregarVotantes(array)
+ { 
+   
+ 
+   for (let i=0;i<array.length;i++)
+   {
+    tabla +="<tr>"
+     //console.log(array[i].last_name+array[i].first_name+array[i].middle_name)
+     if(array[i].last_name!=null && array[i].first_name!=null && array[i].middle_name!=null)
+     {
+      tabla+="<td><a href='"+array[i].url+"'>"+array[i].last_name+" "+array[i].first_name+" "+array[i].middle_name+"</a></td>"
+     }
+    else if(array[i].middle_name==null)
+     {
+       tabla+="<td><a href='"+array[i].url+"'>"+array[i].last_name+" "+array[i].first_name+" "+"..."+"</a></td>"
+     }
+     tabla+="<td>"+" "+array[i].party+" "+"</td>"
+    tabla+="<td>"+" "+array[i].state+" "+"</td>"
+     tabla+="<td>"+" "+array[i].seniority+" "+"</td>"
+     tabla+="<td>"+" "+array[i].votes_with_party_pct+"%"+" "+"</td></tr>"
+
+   }
+ }
+//  tbody.appendChild(tabla)
+//  pro.appendChild(tbody)
+pro.innerHTML=tabla
