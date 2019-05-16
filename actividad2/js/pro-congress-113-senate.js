@@ -19433,7 +19433,7 @@ var data = {
                  "suffix": null,
                  "date_of_birth": "1962-09-13",
                  "gender": "F",
-                 "party": "R",
+                 "party": "I",
                  "leadership_role": null,
                  "twitter_account": "RepAnnWagner",
                  "facebook_account": "RepAnnWagner",
@@ -20748,12 +20748,23 @@ independiente.addEventListener("change",filtroPartido,false);
    if (check1) {
      var arrayRepublicanos = arreglo.filter(arre => arre.party == "R");
      votantes(arrayRepublicanos);
-     pro.innerHTML = tabla;
-   } else {
+     if(check2 || check3)
+     {
+       pro.innerHTML = tabla; 
+     }
+     else
+     {
+      pro.innerHTML = tabla;
+     }
+    } else {
+      if((check2&&check3)!=true)
+      {
      pro.innerHTML = "";
      agregarVotantes(arreglo)
      pro.innerHTML=tabla;
+    }
    }
+
    if (check2) {
      var arrayDemocrata = arreglo.filter(arre => arre.party == "D");
      votantes(arrayDemocrata);
@@ -20859,7 +20870,45 @@ pro.innerHTML=tabla
 
 //console.log(tabla)
 
+/*+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+*/
+//filtro del select
+var select =document.getElementById('filtroSeleccion')
+var insertaDatos = ""
 
+var newArraySeleccion =[]
+var j=0,aux=0;
+for (let i = 0; i < arreglo.length; i++) {
+  newArraySeleccion[i]=arreglo[i].state
+}
+function onlyUnique(value, index, self) { 
+  return self.indexOf(value) === index;
+}
+var filtroSeleccion =newArraySeleccion.filter(onlyUnique)
+
+// console.log(filtroSeleccion)
+insertaDatos+="<option value=all>All</option>"
+for(let i=0;i<filtroSeleccion.length;i++)
+{
+  insertaDatos+="<option value="+filtroSeleccion[i]+">"+filtroSeleccion[i]+"</option>"
+}
+select.innerHTML=insertaDatos;
+select.addEventListener("change", seleccion)
+
+function seleccion()
+{
+  if(select.value=="all")
+  {
+    agregarVotantes(arreglo)
+    pro.innerHTML=tabla;
+  }
+  else
+  {
+    var arrayRepublicano = arreglo.filter(arre => arre.state == select.value);
+    votantes(arrayRepublicano)
+    pro.innerHTML = tabla;
+  }
+  
+}
 
 
 

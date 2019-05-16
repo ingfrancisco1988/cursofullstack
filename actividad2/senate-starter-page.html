@@ -49,15 +49,27 @@
                 <h2>Senators</h2>
                 <p>First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.</p>
                 
-                <div>
-                        <label >Filter by Party:</label>
-                        <input type="checkbox" name="republican" id="repu">
-                        <label for="republican">Republican</label>
-                        <input type="checkbox" name="democrat" id="demo">
-                        <label for="democrat">Democrat</label>
-                        <input type="checkbox" name="independent" id="inde">
-                        <label for="independent">Independent</label>
-                    </div>
+                <div class="d-flex justify-content-start">
+                    <div class="align-middle">
+                            <label >Filter by Party:</label>
+                            <input type="checkbox" name="republican" id="repu">
+                            <label for="republican">Republican</label>
+                            <input type="checkbox" name="democrat" id="demo">
+                            <label for="democrat">Democrat</label>
+                            <input type="checkbox" name="independent" id="inde">
+                            <label for="independent">Independent</label>
+                        </div>
+                        <div class=" ml-auto mb-1">
+                            <label for="filtro">Filter by State</label>
+                            <select class="btn btn-dark" name="filtro" id="filtroSeleccion">
+                                <option></option>
+                                <option></option>
+                                <option></option>
+                                <option></option>
+                                <option></option>
+                              </select>
+                        </div>
+                </div>
                 <div class=" scroll table-wrapper-scroll-y">                    
                 <table class="table  " id="senate-data" style=" text-align: center; border-block-end-style: double">
                     

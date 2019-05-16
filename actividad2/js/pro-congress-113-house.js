@@ -4848,20 +4848,133 @@ var data = {
 var str = JSON.stringify(data, null, 2);
 var valor = JSON.parse(str)
 var pro = document.getElementById("senate-data")
-
+var tabla =""
 var tbody= document.createElement("tbody")
-// pro.appendChild(tbody)
-
- var tabla="<thead class='thead-dark'><tr><th>Full Name</th><th>Party</th><th>State</th><th>Senority</th><th>Percentage of votes</th></tr></thead>"
+ pro.appendChild(tbody)
+ 
 
 
 
  var arreglo = valor.results[0].members
- agregarVotantes(arreglo)
+
+ 
+ //*-*--**--*--*--*--**-*-*-*--**--*-*--*-*---*-*--*-*-*-*-*-*-*-*-*-*-
+ /*Funcion para validar los chechkbox*/
+ var democrata = document.getElementById("demo");
+ var republicano = document.getElementById("repu");
+ var independiente = document.getElementById("inde");
+
+republicano.addEventListener("change", filtroPartido, false);
+democrata.addEventListener("change",filtroPartido,false);
+independiente.addEventListener("change",filtroPartido,false);
+
+
+ function filtroPartido() {
+    var check1 = republicano.checked;
+    var check2 =democrata.checked;
+    var check3 =independiente.checked;
+    
+   
+   if (check1) {
+     var arrayRepublicanos = arreglo.filter(arre => arre.party == "R");
+     votantes(arrayRepublicanos);
+     if(check2 || check3)
+     {
+       pro.innerHTML = tabla; 
+     }
+     else
+     {
+      pro.innerHTML = tabla;
+     }
+    } else {
+      if((check2&&check3)!=true)
+      {
+     pro.innerHTML = "";
+     agregarVotantes(arreglo)
+     pro.innerHTML=tabla;
+    }
+   }
+
+   if (check2) {
+     var arrayDemocrata = arreglo.filter(arre => arre.party == "D");
+     votantes(arrayDemocrata);
+     if (check1 || check3) {
+       pro.innerHTML += tabla;
+     } else {
+       pro.innerHTML = tabla;
+     }
+   }
+
+   if(check3)
+   {
+     var arrayIndependiente =arreglo.filter(arre => arre.party == "I");
+     votantes(arrayIndependiente);
+     if (check1 || check2) {
+       pro.innerHTML += tabla;
+     } else{
+       pro.innerHTML =tabla;
+     }
+
+   }
+   
+ 
+ }
+
+ 
+ function votantes(array) {
+  tabla="<thead class='thead-dark'><tr><th>Full Name</th><th>Party</th><th>State</th><th>Senority</th><th>Percentage of votes</th></tr></thead>"
+ 
+  for (let i = 0; i < array.length; i++) {
+   
+   tabla += "<tr>";
+    //console.log(array[i].last_name+array[i].first_name+array[i].middle_name)
+    if (
+      array[i].last_name != null &&
+      array[i].first_name != null &&
+      array[i].middle_name != null
+    ) {
+      tabla +=
+        "<td><a href='" +
+        array[i].url +
+        "'>" +
+        array[i].last_name +
+        " " +
+        array[i].first_name +
+        " " +
+        array[i].middle_name +
+        "</a></td>";
+    } else if (array[i].middle_name == null) {
+      tabla +=
+        "<td><a href='" +
+        array[i].url +
+        "'>" +
+        array[i].last_name +
+        " " +
+        array[i].first_name +
+        " " +
+        "..." +
+        "</a></td>";
+    }
+    tabla += "<td>" + " " + array[i].party + " " + "</td>";
+    tabla += "<td>" + " " + array[i].state + " " + "</td>";
+    tabla += "<td>" + " " + array[i].seniority + " " + "</td>";
+    tabla +=
+      "<td>" +
+      " " +
+      array[i].votes_with_party_pct +
+      "%" +
+      " " +
+      "</td></tr>";
+  }
+  return tabla; 
+  }
+
+
+agregarVotantes(arreglo)
  function agregarVotantes(array)
  { 
    
- 
+  tabla="<thead class='thead-dark'><tr><th>Full Name</th><th>Party</th><th>State</th><th>Senority</th><th>Percentage of votes</th></tr></thead>"
    for (let i=0;i<array.length;i++)
    {
     tabla +="<tr>"
@@ -4884,3 +4997,45 @@ var tbody= document.createElement("tbody")
 //  tbody.appendChild(tabla)
 //  pro.appendChild(tbody)
 pro.innerHTML=tabla
+
+//console.log(tabla)
+
+/*+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+--+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+*/
+//filtro del select
+var select =document.getElementById('filtroSeleccion')
+var insertaDatos = ""
+
+var newArraySeleccion =[]
+var j=0,aux=0;
+for (let i = 0; i < arreglo.length; i++) {
+  newArraySeleccion[i]=arreglo[i].state
+}
+function onlyUnique(value, index, self) { 
+  return self.indexOf(value) === index;
+}
+var filtroSeleccion =newArraySeleccion.filter(onlyUnique)
+
+// console.log(filtroSeleccion)
+insertaDatos+="<option value=all>All</option>"
+for(let i=0;i<filtroSeleccion.length;i++)
+{
+  insertaDatos+="<option value="+filtroSeleccion[i]+">"+filtroSeleccion[i]+"</option>"
+}
+select.innerHTML=insertaDatos;
+select.addEventListener("change", seleccion)
+
+function seleccion()
+{
+  if(select.value=="all")
+  {
+    agregarVotantes(arreglo)
+    pro.innerHTML=tabla;
+  }
+  else
+  {
+    var arrayRepublicano = arreglo.filter(arre => arre.state == select.value);
+    votantes(arrayRepublicano)
+    pro.innerHTML = tabla;
+  }
+  
+}
