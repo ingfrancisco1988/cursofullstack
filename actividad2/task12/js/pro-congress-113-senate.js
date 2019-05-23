@@ -20761,7 +20761,7 @@ independiente.addEventListener("change",filtroPartido,false);
       {
      pro.innerHTML = "";
      agregarVotantes(arreglo)
-     pro.innerHTML=tabla;
+     //pro.innerHTML=tabla;
     }
    }
 
