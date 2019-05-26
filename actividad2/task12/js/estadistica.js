@@ -41,13 +41,13 @@ function listarPartidos(arreglo)
             { nombre: " ", numero_perdidas: 0, missed_votes_pct: 0 }
           ]
         },
-        "personas_menos_votan": 
+        "partido_menos_comprometido": 
         {
           datos: [
             { nombre: " ", total_votes: 0, votes_with_party_pct: 0 }
           ]
         },
-        "personas_mas_votan": 
+        "partido_mas_leal": 
         {
           datos: [
             { nombre: " ", total_votes: 0, votes_with_party_pct: 0 }
@@ -108,31 +108,31 @@ obj= JSON.parse(data);
   
   //el metodo con un callback para  que me determine las personas del partido que menos votan
   valor1.sort(function(a, b) {
-    if (a.missed_votes > b.missed_votes) {
+    if (a.missed_votes_pct > b.missed_votes_pct) {
       return 1;
     }
 
-    if (a.missed_votes < b.missed_votes) {
+    if (a.missed_votes_pct < b.missed_votes_pct) {
       return -1;
     }
     // si son iguales
     return 0;
   });
   //+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/++/+/+/+/+/+/+/+/+/+/+/
-  //muestra el 10% de personas menos comprometidas del partido
+  //muestra el 10% de personas mas comprometidas del partido
   for (let i = 0; i < (valor1.length * 10) / 100; i++) {    
     obj.votantes_mas_comprometidos['datos'].push({"nombre":valor1[i].first_name,"numero_perdidas":valor1[i].missed_votes,"missed_votes_pct":valor1[i].missed_votes_pct})
   }    
   //+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/+/++/+/+/+/+/+/+/+/+/+/+/
 
   //*/*/*/**/*/*/*/*/*/*/*/*/*/*/*//*/*/*/*/*/*/*/*/*/*/*//*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
-  //Parte 3
+  //Parte 3 el 10% de los votantes menos comprometidos
   valor1.sort(function(a, b) {
-    if (a.missed_votes > b.missed_votes) {
+    if (a.missed_votes_pct > b.missed_votes_pct) {
       return -1;
     }
 
-    if (a.missed_votes < b.missed_votes) {
+    if (a.missed_votes_pct < b.missed_votes_pct) {
       return 1;
     }
     // si son iguales
@@ -140,7 +140,7 @@ obj= JSON.parse(data);
   });
 
 
-  //el ciclo recorre el 10% de los votantes mas comprometidos
+  //el ciclo recorre el 10% de los votantes menos comprometidos
 
   for (let i = 0; i < (valor1.length * 10) / 100; i++) {    
     obj.votantes_menos_comprometidos['datos'].push({"nombre":valor1[i].first_name,"numero_perdidas":valor1[i].missed_votes,"missed_votes_pct":valor1[i].missed_votes_pct})
@@ -162,19 +162,19 @@ valor1.sort(function(a, b) {
 
  //muestra el 10% de personas mas votan por el partido
 for (let i = 0; i < (valor1.length * 10) / 100; i++) {
-  obj.personas_mas_votan['datos'].push({"nombre":valor1[i].first_name,"total_votes":valor1[i].total_votes,"votes_with_party_pct":valor1[i].votes_with_party_pct})
+  obj.partido_mas_leal['datos'].push({"nombre":valor1[i].first_name,"total_votes":valor1[i].total_votes,"votes_with_party_pct":valor1[i].votes_with_party_pct})
  
 }
 //*/*/*/**/*/*/*/*/*/*/*/*/*/*/*//*/*/*/*/*/*/*/*/*/*/*//*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
 
 //*/*/*/**/*/*/*/*/*/*/*/*/*/*/*//*/*/*/*/*/*/*/*/*/*/*//*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
-  //Parte 5
+  //Parte 5 10% de personas que menos
   valor1.sort(function(a, b) {
     if (a.votes_with_party_pct > b.votes_with_party_pct) {
-      return -1;
+      return 1;
     }
     if (a.votes_with_party_pct < b.votes_with_party_pct) {
-      return 1;
+      return -1;
     }
     // si son iguales
     return 0;
@@ -182,7 +182,7 @@ for (let i = 0; i < (valor1.length * 10) / 100; i++) {
  
   //muestra el 10% de personas que menos  votan por el partido
   for (let i = 0; i < (valor1.length * 10) / 100; i++) {
-    obj.personas_menos_votan['datos'].push({"nombre":valor1[i].first_name,"total_votes":valor1[i].total_votes,"votes_with_party_pct":valor1[i].votes_with_party_pct})
+    obj.partido_menos_comprometido['datos'].push({"nombre":valor1[i].first_name,"total_votes":valor1[i].total_votes,"votes_with_party_pct":valor1[i].votes_with_party_pct})
   }
   //*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*//*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
    //console.log(JSON.stringify(obj));
@@ -193,17 +193,75 @@ for (let i = 0; i < (valor1.length * 10) / 100; i++) {
   {
     var str = valor1
 
-    var estadisticaAsistencia = document.getElementById("menos_asistencia")
-    var estadisticaPartido = document.getElementById("menos_partido")
+    var estadisticaMenosComprometido = document.getElementById("menos_comprometido")
+    var estadisticaMenosLeal = document.getElementById("menos_leal")
+    var estadisticaMasComprometido = document.getElementById("mas_comprometido")
+    var estadisticaMasLeal = document.getElementById("mas_leal")
     var mostrarTabla2 =""
-    var mostrar = str.votantes_menos_comprometidos.datos
-    mostrarTabla2 = "<tbody>"
-    for(let i=1;i<str.votantes_menos_comprometidos.datos.length;i++)
-    {     
-      mostrarTabla2 +="<tr><td>"+mostrar[i].nombre+"</td> <td>"+ mostrar[i].numero_perdidas+"</td> <td>"+ mostrar[i].missed_votes_pct+"</td> </tr>"
-    }
-    estadisticaAsistencia.innerHTML=mostrarTabla2
-     
+    //primera parte de las tablas
+    var mayorAttendance = str.votantes_menos_comprometidos.datos
+    var menorPartyLoyalty = str.partido_menos_comprometido.datos
 
-   //Estadistica 1
+    //segunda parte de las tablas
+    var mayorAttendace = str.votantes_mas_comprometidos.datos
+    var mayorPartyLoyalty = str.partido_mas_leal.datos
+
+    if (document.body.contains(estadisticaMenosComprometido)) {
+      mostrarTabla2 =
+        "<thead><td>Name</td><td>Number of Missed Votes</td><td>% Missed</td></thead>";
+      mostrarTabla2 += "<tbody>";
+      for (let i = 1; i < str.votantes_menos_comprometidos.datos.length;i++) {
+        mostrarTabla2 +=
+          "<tr><td>" +
+          mayorAttendance[i].nombre +
+          "</td> <td>" +
+          mayorAttendance[i].numero_perdidas +
+          "</td> <td>" +
+          mayorAttendance[i].missed_votes_pct +
+          "</td> </tr>";
+      }
+      mostrarTabla2 += "</tbody>";
+      estadisticaMenosComprometido.innerHTML = mostrarTabla2;
+    } else if (document.body.contains(estadisticaMenosLeal)) {
+      mostrarTabla2 =
+        "<thead class='bg-black'><td>Name</td><th>Number Party Votes</th><th>% Party Votes</th></thead>";
+      mostrarTabla2 += "<tbody>";
+      for (let i = 1; i < str.partido_menos_comprometido.datos.length; i++) {
+        mostrarTabla2 +=
+          "<tr><td>" +
+          menorPartyLoyalty[i].nombre +
+          "</td> <td>" +
+          menorPartyLoyalty[i].total_votes +
+          "</td> <td>" +
+          menorPartyLoyalty[i].votes_with_party_pct +
+          "</td> </tr>";
+      }
+      mostrarTabla2 += "</tbody>";
+      estadisticaMenosLeal.innerHTML = mostrarTabla2;
+    }
+ 
+   //Estadistica 2-4
+   if(document.body.contains(estadisticaMasComprometido))
+    {
+    mostrarTabla2 ="<thead><td>Name</td><td>Number of Missed Votes</td><td>% Missed</td></thead>"  
+    mostrarTabla2 += "<tbody>"
+    for(let i=1;i<str.votantes_mas_comprometidos.datos.length;i++)
+    {     
+      mostrarTabla2 +="<tr><td>"+mayorAttendace[i].nombre+"</td> <td>"+ mayorAttendace[i].numero_perdidas+"</td> <td>"+ mayorAttendace[i].missed_votes_pct+"</td> </tr>"
+    }
+    mostrarTabla2 += "</tbody>"
+    estadisticaMasComprometido.innerHTML=mostrarTabla2
   }
+  else if(document.body.contains(estadisticaMasLeal))
+  {
+    mostrarTabla2 ="<thead class='bg-black'><td>Name</td><th>Number Party Votes</th><th>% Party Votes</th></thead>" 
+    mostrarTabla2 += "<tbody>"
+    for(let i=1;i<str.partido_mas_leal.datos.length;i++)
+    {    
+      
+      mostrarTabla2 +="<tr><td>"+mayorPartyLoyalty[i].nombre+"</td> <td>"+ mayorPartyLoyalty[i].total_votes+"</td> <td>"+ mayorPartyLoyalty[i].votes_with_party_pct+"</td> </tr>"
+    }
+    mostrarTabla2 += "</tbody>"
+    estadisticaMasLeal.innerHTML = mostrarTabla2
+  }
+}
