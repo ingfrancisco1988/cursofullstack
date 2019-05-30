@@ -94,14 +94,20 @@ obj= JSON.parse(data);
  
       resultadoDemocrata = (valorDemocrata / democrata.length).toFixed(2);
       resultadoRepublicano = (valorRepublicano / republican.length).toFixed(2);
-      resultadoIndependiente = valorIndependiente;
+      resultadoIndependiente = (valorIndependiente/ independents.length).toFixed(2);
+      
 
       obj.numero_de_democratas = democrata.length;
       obj.promedio_de_votos_democratas = resultadoDemocrata;
       obj.numero_de_republicanos = republican.length; 
       obj.Promedio_de_votos_republicanos = resultadoRepublicano;
       obj.numero_de_independientes = independents.length;
-      obj.promedio_de_votos_independientes = resultadoIndependiente;
+      if(resultadoIndependiente==NaN)
+      {
+        resultadoIndependiente=0
+        obj.promedio_de_votos_independientes = resultadoIndependiente;
+      }
+      
    
   //*/*/*/**/*/*/*/*/*/*/*/ */*/*/*//*/*/*/*/*/*/*/*/*/*/*//*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
   //Parte 2
@@ -192,15 +198,23 @@ for (let i = 0; i < (valor1.length * 10) / 100; i++) {
   function crearTablas(valor1)
   {
     var str = valor1
-
+    var estadistica1= document.getElementById("primer_estadistica")
     var estadisticaMenosComprometido = document.getElementById("menos_comprometido")
     var estadisticaMenosLeal = document.getElementById("menos_leal")
     var estadisticaMasComprometido = document.getElementById("mas_comprometido")
     var estadisticaMasLeal = document.getElementById("mas_leal")
-    var mostrarTabla2 =""
+    var mostrarTabla1=""
+    var mostrarTabla2 ="" 
+
     //primera parte de las tablas
     var mayorAttendance = str.votantes_menos_comprometidos.datos
     var menorPartyLoyalty = str.partido_menos_comprometido.datos
+
+    mostrarTabla1 ="<thead class='thead-dark'><tr><th class='align-middle'>Party</th><th>Number of Reps</th><th>% Voted with Prty</tr></tr></thead>"
+    mostrarTabla1 +="<tbody><tr><td>Republican</td><td>"+str.numero_de_republicanos+"</td><td>"+str.Promedio_de_votos_republicanos+"</td></tr>"
+    mostrarTabla1 +="<tr><td>Democrat</td><td>"+str.numero_de_democratas+"</td><td>"+str.promedio_de_votos_democratas+"</td>"
+    mostrarTabla1 +="<tr><td>Independent</td><td>"+str.numero_de_independientes+"</td><td>"+str.promedio_de_votos_independientes+"</td></tr></tbody>"
+    estadistica1.innerHTML = mostrarTabla1;
 
     //segunda parte de las tablas
     var mayorAttendace = str.votantes_mas_comprometidos.datos
@@ -208,7 +222,7 @@ for (let i = 0; i < (valor1.length * 10) / 100; i++) {
 
     if (document.body.contains(estadisticaMenosComprometido)) {
       mostrarTabla2 =
-        "<thead><td>Name</td><td>Number of Missed Votes</td><td>% Missed</td></thead>";
+        "<thead class='thead-dark'><tr><th>Name</th><th>Number of Missed Votes</th><th>% Missed</th></tr></thead>";
       mostrarTabla2 += "<tbody>";
       for (let i = 1; i < str.votantes_menos_comprometidos.datos.length;i++) {
         mostrarTabla2 +=
@@ -224,7 +238,7 @@ for (let i = 0; i < (valor1.length * 10) / 100; i++) {
       estadisticaMenosComprometido.innerHTML = mostrarTabla2;
     } else if (document.body.contains(estadisticaMenosLeal)) {
       mostrarTabla2 =
-        "<thead class='bg-black'><td>Name</td><th>Number Party Votes</th><th>% Party Votes</th></thead>";
+        "<thead class='thead-dark'><tr><th>Name</th><th>Number Party Votes</th><th>% Party Votes</th></tr></thead>";
       mostrarTabla2 += "<tbody>";
       for (let i = 1; i < str.partido_menos_comprometido.datos.length; i++) {
         mostrarTabla2 +=
@@ -243,7 +257,7 @@ for (let i = 0; i < (valor1.length * 10) / 100; i++) {
    //Estadistica 2-4
    if(document.body.contains(estadisticaMasComprometido))
     {
-    mostrarTabla2 ="<thead><td>Name</td><td>Number of Missed Votes</td><td>% Missed</td></thead>"  
+    mostrarTabla2 ="<thead class='border rounded thead-dark'><tr><th>Name</th><th>Number of Missed Votes</th><th>% Missed</th></tr></thead>"  
     mostrarTabla2 += "<tbody>"
     for(let i=1;i<str.votantes_mas_comprometidos.datos.length;i++)
     {     
@@ -254,7 +268,7 @@ for (let i = 0; i < (valor1.length * 10) / 100; i++) {
   }
   else if(document.body.contains(estadisticaMasLeal))
   {
-    mostrarTabla2 ="<thead class='bg-black'><td>Name</td><th>Number Party Votes</th><th>% Party Votes</th></thead>" 
+    mostrarTabla2 ="<thead class='thead-dark'><tr><th>Name</th><th>Number Party Votes</th><th>% Party Votes</th></tr></thead>" 
     mostrarTabla2 += "<tbody>"
     for(let i=1;i<str.partido_mas_leal.datos.length;i++)
     {    
