@@ -12,30 +12,50 @@
     <body>
     
       <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light border border-dark">
-          <a class="navbar-brand" href="#">TGIF</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-              <li class="nav-item active">
-                <a class="nav-link" href="home-starter-page.html">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Congress 113
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="senate-starter-page.html">Senate</a>
-                  <a class="dropdown-item" href="house-starter-page.html">House</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </nav>
+          <nav class="navbar navbar-expand-lg navbar-light bg-light border border-dark">
+              <a class="navbar-brand" href="#">TGIF</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                  aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                  <ul class="navbar-nav">
+                      <li class="nav-item active">
+                          <a class="nav-link" href="home-starter-page.html">Home <span class="sr-only">(current)</span></a>
+                      </li>
+                      <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Congress 113
+                          </a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <a class="dropdown-item" href="senate-starter-page.html">Senate</a>
+                              <a class="dropdown-item" href="house-starter-page.html">House</a>
+                          </div>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Attendance
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="senate_house-attendance-statistics.html">Senate</a>
+                                <a class="dropdown-item" href="house-attendance-estadistica.html">House</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Party Loyalty
+                          </a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <a class="dropdown-item" href="senate_house-party-loyalty-statistics.html">Senate</a>
+                              <a class="dropdown-item" href="house-party-loyalty-estadistica.html">House</a>
+                          </div>
+                      </li>
+                      </li>
+                  </ul>
+              </div>
+          </nav>
         <!--Table container-->
         <div>
           <h2>Congressmen</h2>
@@ -60,11 +80,7 @@
                     <div class=" ml-auto mb-1">
                         <label for="filtro">Filter by State</label>
                         <select class="btn btn-dark" name="filtro" id="filtroSeleccion">
-                            <option></option>
-                            <option></option>
-                            <option></option>
-                            <option></option>
-                            <option></option>
+                             
                           </select>
                     </div>
             </div>

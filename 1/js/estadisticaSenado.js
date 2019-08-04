@@ -10,7 +10,8 @@ const key = '9wKtgZ41ysxlLPhcwpClbATm2d3dudizPNI62ceY'
 
 var rArchivoJson = new XMLHttpRequest();
 rArchivoJson.onload = escucharRespuesta;
-rArchivoJson.open("get","js/pro-congress-113-house.json",true);
+rArchivoJson.open("get",valor,true);
+rArchivoJson.setRequestHeader('x-api-key', key)
 
 
 rArchivoJson.send();

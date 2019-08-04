@@ -5,15 +5,14 @@ var json ={};
 var democrata ={}
 var republican ={}
 var independents ={}
-const valor = 'https://api.propublica.org/congress/v1/113/senate/members.json';
+
+const valor = 'https://api.propublica.org/congress/v1/113/house/members.json';
 const key = '9wKtgZ41ysxlLPhcwpClbATm2d3dudizPNI62ceY'
 
 var rArchivoJson = new XMLHttpRequest();
 rArchivoJson.onload = escucharRespuesta;
-rArchivoJson.open("get","js/pro-congress-113-house.json",true);
-
-
-rArchivoJson.send();
+rArchivoJson.open("get",valor,true);
+rArchivoJson.setRequestHeader('x-api-key', key)
 
 function escucharRespuesta(e) {
     json = JSON.parse(this.response);

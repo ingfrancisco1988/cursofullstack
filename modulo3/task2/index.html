@@ -28,13 +28,76 @@
 <link rel="manifest" href="img/favicon/manifest.json">
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#ffffff">
-  <title>Document</title>
+  <title>Schedule NYSL</title>
+
+  <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
+ 
+
+<script defer src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCwC4Ed8N_aM-zeuRnQZ24LW7eTkGoqm9c",
+    authDomain: "task3minhub.firebaseapp.com",
+    databaseURL: "https://task3minhub.firebaseio.com",
+    projectId: "task3minhub",
+    storageBucket: "",
+    messagingSenderId: "171075241099",
+    appId: "1:171075241099:web:d25659f71cad18c0"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
 </head>
 
 <body>
     
   <!-- Modal -->
+  <div   class="container"   >
+      <div data-toggle="modal" data-target="#login"></div>       
+      
+      <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content ">
+            <div class="modal-header">
+              <h5 class="modal-title" id="loginLabel">Validacion</h5>              
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group text-center">
+                  <label for="recipient-name" class="col-form-label">Mail:</label>
+                  <input type="email" class="form-control mx-auto w-50" id="logEmail">
+                </div>
+                <div class="form-group text-center">
+                  <label for="message-text" class="col-form-label">Password:</label>
+                  <input type="password" class="form-control mx-auto w-50" id="logPass">
+                </div>
+                <br>
+                <div id="contenido">
+
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="logUser()" class="btn btn-primary">Ingresar</button>
+                <button type="button" onclick="registrar()" class="btn btn-primary">newuser</button>
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
     
   <div class="content">
     
@@ -53,9 +116,9 @@
           <div class="d-flex justify-content-center flex-wrap">
             <div class="text-center col-xl-8 col-sm-12 mt-3 ">
               <!--div para el click en la ventana modal-->
-              <div data-toggle="modal" data-target="#exampleModalCenter">
-                <div class="rounded border border-secondary p-3 shadow">
-                  <div class="border-bottom d-flex   ">
+              <div  data-toggle="modal" data-target="#exampleModalCenter">
+                <div class="rounded border border-secondary p-3 boton4 shadow ">
+                  <div  class="border-bottom d-flex   ">
                     <div class="text-center p-2">
                         U1 and U4
                     </div>
@@ -65,7 +128,6 @@
                     </div>
                   </div>
                   <div class="pt-4">
-
                     <p>
                       Location
                       AJ Katzenmaier
@@ -348,6 +410,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+  <script src="js/app.js"></script>
 </body>
 
 </html>

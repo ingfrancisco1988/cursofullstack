@@ -20720,7 +20720,7 @@ var valor = JSON.parse(str)
 var pro = document.getElementById("senate-data")
 var tabla =""
 var tbody= document.createElement("tbody")
- pro.appendChild(tbody)
+ //pro.appendChild(tbody)
  
 
 
@@ -20761,7 +20761,7 @@ independiente.addEventListener("change",filtroPartido,false);
       {
      pro.innerHTML = "";
      agregarVotantes(arreglo)
-     pro.innerHTML=tabla;
+     //pro.innerHTML=tabla;
     }
    }
 
